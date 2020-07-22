@@ -6,26 +6,17 @@
 <meta charset="UTF-8">
 <title>[GuestDetail.jsp]</title>
 <style>
-	*{
-		font-size: 20pt
+	tr:nth-child(1) {
+	text-align:center;	
 	}
-	table{
-		border: 1px solid;
+	tr:nth-child(2) td:nth-child(1) {
+	text-align:center;	
 	}
-	tr{
-		border: 1px solid;
+	.sabun{
+	background-color: lightgray;
 	}
 	td{
-		border: 1px solid;
-		border-width: 0px;
-	}
-	a{
-		text-decoration: none;
-		color: green;
-	}
-	a:hover{
-		font-size: 22pt;
-		color: blue;
+	padding:7px;
 	}
 </style>
 <script type="text/javascript"></script>
@@ -34,33 +25,58 @@
 	<p>
 	
 <%
-	String data = "7700";
-	msg="select * from guest where sabun = " + data;
+	Gdata = request.getParameter("idx");
+	System.out.println("넘어온 Gsabun = " + Gdata);
+	msg="select * from guest where sabun = " + Gdata;
 	ST=CN.createStatement();
 	RS=ST.executeQuery(msg);
-%>	
-	
-	<table width=900>
-		<tr bgcolor="yellow">
-			 <td>사번</td> <td>이름</td> <td>제목</td> <td>날짜</td><td>히트</td>
-		</tr>
+%>		
+	<table width=700px cellspacing="0">
+		
 		<%
 		while(RS.next()==true){
-			Gsabun=RS.getInt("sabun");
 			Gtitle=RS.getString("title");
-		%>
+		%>	
 		<tr>
-			 <td><%=Gsabun %></td>
-			 <td><%=RS.getString("name") %></td>
-			 <td><%=RS.getString("title") %></td>
-			 <td><%=RS.getDate("wdate") %></td>
-			 <td><%=RS.getInt("hit") %></td>
+			<td colspan="2" class="sabun">
+				사번 : [<%=RS.getInt("sabun") %>]
+			</td>			
 		</tr>
-		<%	} %>
+		<tr>
+			<td rowspan="5">
+				<img alt="" src="images\bear.jpg">
+			</td>
+			<td>
+				이름 : <%=RS.getString("name")  %> 
+			</td>			
+		</tr>
+		<tr>
+			<td >
+				제목 : <%=RS.getString("title") %> 
+			</td>
+		</tr>
+		<tr>
+			<td >
+				날짜 : <%=RS.getDate("wdate")  %> 
+			</td>
+		</tr>
+		<tr>
+			<td >
+				급여 : <%=RS.getInt("pay")%>
+			</td>
+		</tr>
+		<tr>
+			<td >
+				이메일 : <%=RS.getString("email") %> 
+			</td>
+		</tr>
+		<%} %>
 	</table>
 	
 	<br>
-		<a href="GuestWrite.jsp"> [등록] </a>		
+		<a href="GuestUpdate.jsp?idx=<%=Gdata%>"> [수정] </a>
+		<a href="GuestWrite.jsp"> [등록] </a>
+		<a href="GuestDelete.jsp?idx=<%=Gdata%>"> [삭제] </a>
 		<a href="index.jsp"> [index] </a>
 		<a href="GuestList.jsp"> [전체출력] </a>
 </body>

@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>[index.jsp]</title>
+<script type="text/javascript">
+	setTimeout("location.href='GuestList.jsp'",1500);</script>
 <style>
 	*{
 		font-size: 24pt;
@@ -15,13 +17,16 @@
 </style>
 </head>
 <body>
-	<h1>우리나라</h1>
-	<h1>좋은나라</h1>
-	<h1>금수강산</h1>
+ 	<div align="center">
+        <br>
+        <video width="600" autoplay muted loop controls="controls">
+            <source src="images/scuba.mp4" type="video/mp4">
+        </video>
+    </div>
 	<img src="images/a1.png">
 	
 	<br>
-		<a href="GuestWrite.jsp"> [등록] </a>		
+		<a href="GuestWrite.jsp"> [등록] </a>
 		<a href="index.jsp"> [index] </a>
 		<a href="GuestList.jsp"> [전체출력] </a>
 </body>

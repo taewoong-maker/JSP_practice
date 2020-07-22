@@ -6,60 +6,63 @@
 <meta charset="UTF-8">
 <title>[GuestList.jsp]</title>
 <style>
-	*{
-		font-size: 20pt
-	}
-	table{
-		border: 1px solid;
-	}
-	tr{
-		border: 1px solid;
-	}
-	td{
-		border: 1px solid;
-		border-width: 0px;
-	}
-	a{
-		text-decoration: none;
-		color: green;
-	}
-	a:hover{
-		font-size: 22pt;
-		color: blue;
-	}
+	
 </style>
 <script type="text/javascript"></script>
 </head>
 <body>
-	<p>
-<% 	
-	//msg="select row_number()over(order by sabun) rn, a.* from guest a";
-	msg="select rownum rn, a.* from guest a";
-	ST=CN.createStatement();
-	RS=ST.executeQuery(msg);
-%>	
-	
-<table width=900 cellspacing="0">
-	<tr bgcolor="yellow" >
-		 <td>행번호</td> <td>사번</td> <td>이름</td> <td>제목</td><td>이메일</td><td>날짜</td><td>조회수</td>
-	</tr>
-	<%
-	while(RS.next()==true){
+
+	<%	
+		msg="select count(*) cnt from guest a";
+		ST=CN.createStatement();
+		RS=ST.executeQuery(msg);
+		RS.next();
+		Gtotal=RS.getInt("cnt");
 	%>
-	<tr>
-		<td><%=RS.getInt("rn") %></td>
-		 <td><%=RS.getInt("sabun") %></td>
-		 <td><%=RS.getString("name") %></td>
-		 <td><%=RS.getString("title") %></td>
-		 <td><%=RS.getString("email") %></td>
-		 <td><%=RS.getDate("wdate") %></td>
-		 <td><%=RS.getInt("hit") %></td>
-	</tr>
-	<%	} %>
-</table>
+	<p>
+		 전체 레코드 갯수 [<%=Gtotal%>]
+	<%	
+		msg="select rownum rn, a.* from guest a";
+		RS=ST.executeQuery(msg);
+	%>
+	<div class=id>
+		<table width=900 cellspacing="0">
+			<tr bgcolor="yellow" >
+				 <td>행번호</td>
+				 <td>사번</td>
+				 <td>이름</td>
+				 <td>제목</td>
+				 <td>이메일</td>
+				 <td>날짜</td>
+				 <td>조회수</td>
+			</tr>
+			<%
+			while(RS.next()==true){
+			%>
+			<tr>
+				 <td>				 
+				 	 <%=RS.getInt("rn") %>
+				 </td>
+				 <td>					 
+					 <%=RS.getInt("sabun") %>				
+				 </td>
+				 <td><%=RS.getString("name") %></td>
+				 <td>
+					 <a href="GuestDetail.jsp?idx=<%=RS.getInt("sabun")%>">
+					 <%=RS.getString("title") %>
+				 </a>
+				 </td>
+				 <td><%=RS.getString("email") %></td>
+				 <td><%=RS.getDate("wdate") %></td>
+				 <td><%=RS.getInt("hit") %></td>
+			</tr>
+			<%	} %>			
+
+		</table>
+	</div>
 	
 	<br>
-		<a href="GuestWrite.jsp"> [등록] </a>		
+		<a href="GuestWrite.jsp"> [등록] </a>
 		<a href="index.jsp"> [index] </a>
 		<a href="GuestList.jsp"> [전체출력] </a>
 </body>

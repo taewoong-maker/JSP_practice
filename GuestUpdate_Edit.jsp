@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>[GuestWriteSave.jsp]</title>
+<title>[GuestUpdate_Edit.jsp]</title>
 <style>
 	
 </style>
@@ -16,41 +16,22 @@
 <%
 	//단독실행하면 에러
 	Gsabun= Integer.parseInt(request.getParameter("sabun"));
-	
-	msg="select sabun from guest";
-	ST=CN.createStatement();
-	RS=ST.executeQuery(msg);
-	while(RS.next()){
-		if(Gsabun==RS.getInt("sabun")){
-			%>
-			<script type="text/javascript">
-			alert("이미있는 사번입니다. 다른 사번을 이용하세요");
-			//setTimeout("location.href='GuestWrite.jsp'", 1500);
-			location.href="GuestWrite.jsp";
-			</script>
-			<%
-			//break;
-		}
-	}
 	Gname=request.getParameter("name");	
 	Gtitle=request.getParameter("title");
 	Gpay=  Integer.parseInt(request.getParameter("pay"));
 	Gemail=request.getParameter("email");
-	System.out.println("사번=" + Gsabun + "<br>");
-	System.out.println("이름=" + Gname + "<br>");
-	System.out.println("제목=" + Gtitle + "<br>");
-	System.out.println("급여=" + Gpay + "<br>");
-	System.out.println("메일=" + Gemail + "<br>");	
-
+	
 	try{
-		msg="insert into guest values(?,?,?,sysdate,?,0,?)";
+		msg="update guest set name=?, title=?, pay=?, email=?"
+				+"where sabun = " + Gsabun;
+							
 		//PreparedStatement명령어로
 		PST=CN.prepareStatement(msg);
-		PST.setInt(1, Gsabun);
-		PST.setString(2, Gname);
-		PST.setString(3, Gtitle);
-		PST.setInt(4, Gpay);
-		PST.setString(5, Gemail);
+		PST.setString(1, Gname);
+		PST.setString(2, Gtitle);
+		PST.setInt(3, Gpay);
+		PST.setString(4, Gemail);
+
 		PST.executeUpdate();	
 		
 		//statement명령어로
