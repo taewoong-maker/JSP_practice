@@ -14,7 +14,7 @@
 <body>
 	<p>
 <%
-	//단독실행하면 에러
+	//단독실행하면 에러. 받아온 값이 없기 때문.
 	Gsabun= Integer.parseInt(request.getParameter("sabun"));
 	Gname=request.getParameter("name");	
 	Gtitle=request.getParameter("title");
@@ -31,22 +31,10 @@
 		PST.setString(2, Gtitle);
 		PST.setInt(3, Gpay);
 		PST.setString(4, Gemail);
-
 		PST.executeUpdate();	
 		
-		//statement명령어로
-     	//ST=CN.createStatement();
-		//msg="insert into guest("
-		//		+"sabun, name, title, wdate, pay, hit, email)"
-		//		+"values("
-		//				+Gsabun+",'"+Gname+"','"+Gtitle+"',sysdate,"
-		//				+Gpay+",0,'"+Gemail+"')"; 		
-		//
-		//에러가 있든없든 무조건 index.jsp로 넘어가도록 해놓음
-		/* System.out.println(msg);
-		out.println(msg); */
 	}catch(Exception e){
-		//response.sendRedirect("GuestWrite.jsp");
+		System.out.println(e);
 	}
 	
 	//저장성공 후 전체출력화면으로 이동

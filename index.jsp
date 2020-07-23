@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>[index.jsp]</title>
 <script type="text/javascript">
-	setTimeout("location.href='GuestList.jsp'",1500);</script>
+	setTimeout("location.href='GuestList.jsp'",1000);</script>
 <style>
 	*{
 		font-size: 24pt;

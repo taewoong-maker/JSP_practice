@@ -35,6 +35,7 @@
 				 <td>이메일</td>
 				 <td>날짜</td>
 				 <td>조회수</td>
+				 <td>삭제</td>
 			</tr>
 			<%
 			while(RS.next()==true){
@@ -55,6 +56,8 @@
 				 <td><%=RS.getString("email") %></td>
 				 <td><%=RS.getDate("wdate") %></td>
 				 <td><%=RS.getInt("hit") %></td>
+				 <td><input type="button" value = "삭제"
+				  onclick="location.href='GuestDetail.jsp?idx=<%=RS.getInt("sabun")%>'"></td>
 			</tr>
 			<%	} %>			
 

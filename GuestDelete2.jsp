@@ -23,15 +23,20 @@
 </head>
 <body>
 	
-	<script type="text/javascript">
-	<%Gdata = request.getParameter("idx"); %>
-	var result = confirm("삭제하시겠습니까?");
-	if(result){		
-		location.href="GuestDelete2.jsp?idx=<%= Gdata %>";
-	}else{
-		location.href="GuestList.jsp";
-	}
-	</script>
+		<%
+			try{ //삭제하는 쿼리
+				Gdata = request.getParameter("idx");
+				System.out.println("넘어온 Gsabun = " + Gdata);
+				msg="delete from guest where sabun = " + Gdata;
+				ST=CN.createStatement();
+				ST.executeUpdate(msg);
+				System.out.println("데이터 삭제 성공 했습니다.");	
+			} catch (Exception e){
+				System.out.println(e);
+			}
+			response.sendRedirect("GuestList.jsp");
+		%>
+		
 	
 	
 	

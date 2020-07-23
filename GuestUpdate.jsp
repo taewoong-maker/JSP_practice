@@ -34,7 +34,8 @@
 %>
 	수정화면
 	<form method="get" action="GuestUpdate_Edit.jsp" >
-		사번 : <%=Gdata %><br>
+		사번 : <input type="text" name="name"
+		 value="<%=RS.getString("sabun")%>(수정불가)" readonly><br>
 		이름 : <input type="text" name="name" value="<%=RS.getString("name")%>"><br>
 		제목 : <input type="text" name="title" value="<%=RS.getString("title")%>"><br>
 		급여 : <input type="text" name="pay" value="<%=RS.getInt("pay")%>"><br>
