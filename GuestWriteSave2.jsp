@@ -31,11 +31,16 @@
 		     //history.back();
 		     </script>
 		     <%
-		    }  
+		    } 
+	  System.out.println("1");
 	  Gname  = request.getParameter("name");
+	  System.out.println("2");
 	  Gtitle = request.getParameter("title");
+	  System.out.println("3");
 	  Gpay   = Integer.parseInt(request.getParameter("pay"));
+	  System.out.println("4");
 	  Gemail = request.getParameter("email");
+	  System.out.println("5");
 	  
 	  //웹페이지에 출력
 	  System.out.println("사번=" + Gsabun + "<br>");
@@ -64,7 +69,7 @@
 	    } catch (Exception e){
 	       System.out.println("[GuestWriteSave.jsp] 에러 사유 : " + e);
 	       e.printStackTrace();}
-	   //response.sendRedirect("GuestList.jsp");
+	   response.sendRedirect("GuestList.jsp");
   %>
 
  <br>

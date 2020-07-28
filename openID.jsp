@@ -11,7 +11,7 @@
    
    <script type="text/javascript">
      function first(){
-    	 opener.myform.sabun.value=open_form.userid.value;
+    	 
      } 
    </script>
 </head>
@@ -22,16 +22,14 @@
 
 <div>
   <img src="images/bar.gif" width=400><br>
-	<form name="open_form" method="get" action="openIDSave.jsp?idx=<%=Gdata%>">
+	<form name="open_form" method="get"
+		    action="openIDSave.jsp?idx=<%=Gdata%>">
 	
 	  userid:<input type="text" name="userid" value="<%=Gdata %>" >
-	         <input type="submit" value="중복처리" ">
+	         <input type="submit" value="중복처리" >
 	         
 	</form>
   <img src="images/bar.gif" width=400><br>
 </div>
 </body>
 </html>
-
-
-

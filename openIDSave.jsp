@@ -32,8 +32,7 @@
   			 %>
 		     <script type="text/javascript">
 			     alert("이미 있는 사번 입니다. 다른 사번을 이용하세요.");
-			     location.href="openID.jsp?idx="+"";
-			     
+			     location.href="openID.jsp?idx="+"";			     
 			     //history.back();
 		     </script>
 		     <%
@@ -42,13 +41,13 @@
 			<script type="text/javascript">
 			     alert("사용가능한 sabun 입니다.");
 			     opener.myform.sabun.value=<%=Gsabun%>
+			     opener.myform.id_ch.value="bbb";
 			     self.close();
 		     </script>
-	     <%
+	<%
 		}
-   }catch(Exception ex){ System.out.println("에러 "+ex); }
-   
-	%> 
+   }catch(Exception ex){ System.out.println("에러 "+ex); }   
+	%>
 
 </body>
 </html>
