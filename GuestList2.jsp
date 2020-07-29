@@ -12,12 +12,7 @@
 	color:crimson;
 } */
 </style>
-<script type="text/javascript">
-	function pagegood(){
-	    document.page.keyword.value="";
-	    page.keyfield.focus();
-	 }
-</script>
+<script type="text/javascript"></script>
 </head>
 <body>
 	<%
@@ -57,7 +52,8 @@
 		ST=CN.createStatement();
 		RS=ST.executeQuery(msg);
 		RS.next();
-		Gtotal=RS.getInt("cnt");			
+		Gtotal=RS.getInt("cnt");	
+		
 		%>
 		<p>
 			 전체 레코드 갯수 [<%=Gtotal%>]
@@ -122,39 +118,36 @@
 				<td colspan="8" align="center">								
 					<%
 					if(startpage>10)
-						out.println("<a href=GuestList.jsp?"+returnpage+"&pageNum="+(startpage-10)+">[이전]</a>" );	
+						out.println("<a href=GuestList2.jsp?"+returnpage+"&pageNum="+(startpage-10)+">[이전]</a>" );	
+					//out.println("<a href=GuestList.jsp?pageNum="+tmp+">[이전]</a>" );
+// 					if(endpage>pagecount){
+// 							endpage=pagecount;
+// 						}
 					for(int i=startpage; i<=endpage ; i++){			
 						if(i==pageNUM){
 							out.println("<font style='color:crimson'>["+i+"]");
 						}else{
-						out.println("<a href=GuestList.jsp?"+returnpage+"&pageNum="+i+">["+i+"]</a>" );
+						out.println("<a href=GuestList2.jsp?"+returnpage+"&pageNum="+i+">["+i+"]</a>" );
 						}
 						//pageNum : 전달자. 매개변수
 						if(i==pagecount)	break;
 						}
 					if(endpage<pagecount)
-						out.println("<a href=GuestList.jsp?"+returnpage+"&pageNum="+(endpage+1)+">[다음]</a>" );
+						out.println("<a href=GuestList2.jsp?"+returnpage+"&pageNum="+(endpage+1)+">[다음]</a>" );
 					%>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="8" align="center">					
-					<form action="GuestList.jsp" name ="page">
-						검색 : 
-						<select name='keyfield' onchange="pagegood()">
-							<option value="">검색키워드</option>
-							<option value="sabun" 
-								<%if(skey.equals("sabun")){out.println("selected");}%>
-								>사번검색</option>
-							<option value="name"
-								<%if(skey.equals("name")){out.println("selected");}%>
-								>이름검색</option>
-							<option value="title"
-								<%if(skey.equals("title")){out.println("selected");}%>
-								>제목검색</option>
-						</select>
-						<input type="text" name="keyword" size="10" placeholder="검색어입력" value="<%=sval%>">
-						<input type="submit" value="검색">
+					<form >
+						<select name="keyfield">
+							<option value=""></option>
+							<option value="sabun">사번검색</option>
+							<option value="name">이름검색</option>
+							<option value="title">제목검색</option>
+						</select>	
+						<input type="text" name="keyword" size="10">
+						<input type="submit" value="검색">					
 					</form>
 				</td>
 			</tr>
@@ -165,6 +158,6 @@
 		<a href="GuestWrite.jsp"> [등록] </a>
 		<a href="index.jsp"> [index] </a>
 		<a href="login.jsp"> [login] </a>
-		<a href="GuestList.jsp"> [전체출력] </a>
+		<a href="GuestList2.jsp"> [전체출력] </a>
 </body>
 </html>
