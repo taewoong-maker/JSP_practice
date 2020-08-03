@@ -22,6 +22,9 @@
 <script type="text/javascript"></script>
 </head>
 <body>
+
+<jsp:useBean id="dao" class="net.tis.sql.GuestSQL"> </jsp:useBean>
+
 	<%
 		String temp =(String)session.getAttribute("naver");
 		if(temp==null||temp==""){
@@ -32,18 +35,13 @@
     </script>
     <%
   		 }else{
+		String data = request.getParameter("idx");
+		dao.dbDelete(data);
 	%>
-	<script type="text/javascript">
-	<%Gdata = request.getParameter("idx"); %>
-	var result = confirm("삭제하시겠습니까?");
-	if(result){		
-		location.href="GuestDelete2.jsp?idx=<%= Gdata %>";
-	}else{
-		location.href="GuestList.jsp";
-	}
-	</script>
-		 <%}%>	
-	
+		<script type="text/javascript">
+			location.href="GuestList.jsp"
+		</script>
+	<% }%>
 	
 </body>
 </html>

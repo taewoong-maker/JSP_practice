@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="ssi.jsp" %>
 <!DOCTYPE html>
@@ -24,22 +25,14 @@
 <body>
 	<p>
 	
-<%
-	Gdata = request.getParameter("idx");
-	System.out.println("넘어온 Gsabun = " + Gdata);
-	msg="select * from guest where sabun = " + Gdata;
-	ST=CN.createStatement();
-	RS=ST.executeQuery(msg);
+<%		
+	GuestDTO d = sql.dbDetail(request.getParameter("idx"));	
 %>		
 	<table width=700px cellspacing="0">
 		
-		<%
-		while(RS.next()==true){
-			Gtitle=RS.getString("title");
-		%>	
 		<tr>
 			<td colspan="2" class="sabun">
-				사번 : [<%=RS.getInt("sabun") %>]
+				사번 : <%=d.getSabun() %>
 			</td>			
 		</tr>
 		<tr>
@@ -47,37 +40,38 @@
 				<img alt="" src="images\bear.jpg">
 			</td>
 			<td>
-				이름 : <%=RS.getString("name")  %> 
+				이름 : <%=d.getName() %> 
 			</td>			
 		</tr>
 		<tr>
 			<td >
-				제목 : <%=RS.getString("title") %> 
+				제목 : <%=d.getTitle() %> 
 			</td>
 		</tr>
 		<tr>
 			<td >
-				날짜 : <%=RS.getDate("wdate")  %> 
+				급여 : <%=d.getPay() %> 
 			</td>
 		</tr>
 		<tr>
 			<td >
-				급여 : <%=RS.getInt("pay")%>
+				조회수 : <%=d.getHit()%>
 			</td>
 		</tr>
 		<tr>
 			<td >
-				이메일 : <%=RS.getString("email") %> 
+				이메일 : <%=d.getEmail() %> 
 			</td>
 		</tr>
-		<%} %>
 	</table>
 	
-	<br>
-		<a href="GuestUpdate.jsp?idx=<%=Gdata%>"> [수정] </a>
-		<a href="GuestWrite.jsp"> [등록] </a>
-		<a href="GuestDelete.jsp?idx=<%=Gdata%>"> [삭제] </a>
-		<a href="index.jsp"> [index] </a>
-		<a href="GuestList.jsp"> [전체출력] </a>
+	 <!-- 댓글문서포함 Guest_reply.jsp -->
+		<jsp:include page="GuestReply.jsp">
+      		 <jsp:param  name="Ridx" value="<%=d.getSabun()%>" />
+    	</jsp:include>
+
+		
+		
+		
 </body>
 </html>
