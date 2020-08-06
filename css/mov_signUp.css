@@ -1,0 +1,30 @@
+h2{
+    text-align: center;
+}
+.container{
+    border: 1px solid red;
+    width: 400px;
+    position: relative;
+}
+.container div{
+    border: 1px solid;
+    padding: 5px;
+    margin: 10px;
+    width: 300px;
+}
+
+input[type=text],
+input[type=password]{
+    display: block;
+    margin-top: 5px;
+    width: 250px;
+    height: 20px;
+}
+span{
+    color: red;
+    font-size: 8pt;    
+}
+#code{
+    width: 100px;
+    display: inline-block;
+}

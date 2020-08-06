@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="css/mov_signUp.css">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="js/mov_signUp.js"></script>
+<body>
+    <div class="container">       
+        <h2>회원가입</h2>
+        <form action="mov_Insert.jsp" method="get" id="signform" name="signform">
+            <div class="dname">
+                이름
+                <input type="text" id="name" name="name" onkeyup="checklen(this,12)">
+            </div>
+            <div class="didentity">
+                ID                
+                <input type="button" onclick="idcheck();" value="중복확인">
+                <span id="spid"></span>
+                <input type="text" id="identity" name="identity" onkeyup="checklen(this,15)">                
+            </div>
+            <div class="pass">
+                비밀번호
+                <input type="password" id="pass" name="pass" onkeyup="checklen(this,15)">
+            </div>
+            <div class="chpass">
+                비밀번호확인
+                <span id="sppw"></span>
+                <input type="password" id="chpass" name="chpass" onkeyup="pwcheck();">
+            </div>
+            <div class="juso1">
+                주소                
+                <input type="text" id="code" name="code" readonly>                   
+                <input type="button" onclick="DaumPostcode()" value="우편번호">
+                <input type="text" id="juso1" name="juso1">
+            </div>
+            <div class="juso2">
+                상세주소
+                <input type="text" id="juso2" name="juso2">
+            </div>
+            <div class="birth">
+                생년월일<span id="spbir"></span>
+                <input type="date" id="birth" name="birth" placeholder="980512 형식으로 입력해주세요" onkeyup="bircheck();">
+            </div>
+            <div class="tel">
+                전화번호<span id="sptel"></span>
+                <input type="text" id="tel" name="tel" placeholder="'-'를 제외한 숫자만 입력해주세요" onkeyup="telcheck();">
+            </div>
+            <div class="button">
+                <input type="button" id="sign" value="가입하기" onclick="check();">
+                <input type="reset" id="reset" value="reset">
+            </div>
+        </form>        
+    </div>
+</body>
+</html>
