@@ -29,6 +29,7 @@
 	PST.setInt(6, tel);
 	PST.executeUpdate();
 	System.out.println("사번으로 mov_guinfo 테이블 저장성공");
+	response.sendRedirect("mov_logIn.html");
 %>
 
 </body>

@@ -1,0 +1,57 @@
+body{
+    height: 100vh;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 13pt; font-weight: bold;
+}
+table{
+    border-collapse: collapse;   
+    width: 700px;
+}
+h2{
+    text-align: center;
+}
+td{
+    height: 30px;    
+}
+td:first-child{
+    width: 80px;
+    text-align: center;
+    border-right: 1px solid lightgray;
+}
+tr:first-child{
+    background-color: lightskyblue;
+    height: 45px;
+    padding-left: 10px;
+    color: white;
+    font-weight: bolder;
+}
+tr td:nth-child(2){
+    padding-left: 10px;
+}
+tr:nth-child(n+4) td:last-child{
+    padding: 10px 20px;
+}
+tr{
+    border: 1px solid lightgray;
+    border-right: none;
+    border-left: none;
+}
+img{
+    width: 300px;
+}
+input[type=button]{
+	margin-top:10px;
+   	margin-left:10px;
+   	float:right;
+    background-color: dodgerblue;
+    border: none;
+    width: 100px;
+    height: 25px;
+    font-weight: bolder;
+    color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+}

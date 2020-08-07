@@ -1,30 +1,59 @@
+body{
+    background-color: rgb(223, 222, 222);
+    height: 100vh;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
 h2{
     text-align: center;
 }
 .container{
-    border: 1px solid red;
+    background-color: #fff;
     width: 400px;
-    position: relative;
+    text-align: center;  
+    position: relative;   
+    box-shadow: black;
+    border-radius: 10px;
 }
 .container div{
-    border: 1px solid;
+    display: inline-block;
     padding: 5px;
     margin: 10px;
-    width: 300px;
+    width: 350px;
+    text-align: left;     
+    font-weight: bolder;
 }
-
+#code{  
+    width: 100px;
+    display: inline-block;
+}
+input{
+    border-radius: 3px;
+    border: 1px solid rgb(190, 190, 190);
+}
 input[type=text],
 input[type=password]{
     display: block;
     margin-top: 5px;
     width: 250px;
     height: 20px;
+    width: 100%;
 }
 span{
     color: red;
     font-size: 8pt;    
 }
-#code{
-    width: 100px;
-    display: inline-block;
+.container .buttons{
+    bottom: 10px;
+    height: 20px;
+    position: relative;
+}
+.buttons input{
+    width: 99%;
+    height: 30px;
+    background-color: rgb(60, 118, 224);
+    border: none;
+    color: white;    
+    position: absolute;
 }

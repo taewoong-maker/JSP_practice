@@ -23,12 +23,18 @@
 	PreparedStatement PST, PST2, PST3;
 	ResultSet RS,RS1, RS2, RS3;
 	String msg, msg2, msg3;
-	String name, identity, pass, juso1, juso2, id, content, title;
+	String name, identity, pass, juso1, juso2, id, content, title, code;
 	String Rwriter;
 	Date  dt = new Date();
 	Date birth;
 	String url, file, size;
 	int Gtotal, Stotal, Rtotal, Rnum, tel;
+	String pnum;//페이지 번호를 문자로 읽어들임
+	int pageNUM, pagecount; // 숫자로 변환, 총페이지 수 
+	int start, end;
+	int startpage, endpage;
+	int tmp; 
+
 %>
 
 <%

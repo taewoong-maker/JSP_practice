@@ -8,6 +8,7 @@
 <title>mov_review.jsp</title>
 <script src="js/mov_review.js"></script>
 </head>
+<link rel="stylesheet" href="css/mov_review.css">
 <body>
 
 <div class="container">
@@ -17,7 +18,7 @@
                 <input type="text" name="id" placeholder="ID">
             </div>
             <div class="pass">
-                <input type="text" name="pass" placeholder="password">
+                <input type="password" name="pass" placeholder="password">
             </div>
             <div class="title">
                 <input type="text" name="title" placeholder="제목">
@@ -30,8 +31,11 @@
             </div>
             <div class="btn">
                 <input type="button" value="등록하기" onclick="rev_sav();">
+                <input type="button" value="리뷰게시판"
+                 onclick="location.href='mov_board.jsp'">
             </div>
         </form>
     </div>
+    <p>
 </body>
 </html>

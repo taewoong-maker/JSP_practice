@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="ssi.jsp" %>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,11 +34,13 @@
 	if(file==null||file==""){
 		file="";
 	}
-	
+	System.out.println(123455);
 	try{
+		System.out.println(123455);
 		ST=CN.createStatement();
 		RS=ST.executeQuery(msg);
 		RS.next();
+		System.out.println(123455);
 		if(RS.getInt("cnt")!=1){
 %>
 		<script type="text/javascript">
@@ -44,6 +49,7 @@
 <% 
 		response.sendRedirect("mov_review.jsp");
 		}else{
+			System.out.println(123455);
 			a ="insert into mov_review ";
 			b ="values(mov_review_seq.nextval,?,?,?,?,sysdate,0)";
 			msg=a+b;
@@ -60,6 +66,8 @@
 		System.out.println("mov_reviewcheck.jsp" + e);
 		}
 %>
+	
+
 
 </body>
 </html>
