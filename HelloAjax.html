@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>[HelloAjax.html]</title>
+ <style type="text/css">
+    *{font-size:20pt;}
+    a{font-size: 20pt; text-decoration: none; color: blue;}
+    a:hover{font-size: 21pt; text-decoration: line-through; color: blue;}
+  </style>
+</head>
+
+<script type="text/javascript">
+   var xhr;   
+   function two(){
+      xhr=new XMLHttpRequest();
+      //var b=document.getElementById("title").value;
+      //var c=$('#title').val();
+      var b=document.myform.title.value;
+//       var url="hello.jsp";
+      var url="hello.jsp?title="+b;
+      
+      xhr.onreadystatechange=display;
+      xhr.open("GET", url, true);
+      xhr.send();
+//       xhr.open("POST", url, true);
+//       xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+//       xhr.send("title="+b);
+   }//end
+   
+   function first(){
+      return new XMLHttpRequest();
+   }//end
+   
+   function display(){
+      if(xhr.readyState==4){
+         if(xhr.status==200){
+            var str=xhr.responseText;
+            alert(str);
+            document.getElementById("msg").innerHTML=str;
+         }
+      }
+   }//end   
+</script>
+
+<body>
+  <div id="msg">
+    <form name="myform" method="get">
+      <b>아이디: </b>
+        <input type="text" name="title" id="title" value="hb">
+        <input type="button" onclick="two()" value="Ajax전송">
+    </form>
+    <br>
+    <img src="images/a3.png">
+  </div>
+</body>
+</html>
