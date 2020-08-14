@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<school>
+    <subject>
+        <title>jQuery,Ajax,javascript</title>
+        <time>월/수/금 TS강의장 7시30분~10시20분</time>
+        <teacher>여름아</teacher>
+    </subject>
+    <subject>
+        <title>HTML5+CSS3 기반의 반응형 웹</title>
+        <time>화/목 Sun강의장 7시30분~10시20분</time>
+        <teacher>겨울아</teacher>
+    </subject>
+    <subject>
+        <title>BootStrap</title>
+        <time>화/목 SM강의장 오후 7시30분~10시20분</time>
+        <teacher>동장군</teacher>
+    </subject>
+</school>

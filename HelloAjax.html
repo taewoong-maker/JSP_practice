@@ -17,15 +17,15 @@
       //var b=document.getElementById("title").value;
       //var c=$('#title').val();
       var b=document.myform.title.value;
-//       var url="hello.jsp";
-      var url="hello.jsp?title="+b;
+      var url="hello.jsp";
+//       var url="hello.jsp?title="+b;
       
       xhr.onreadystatechange=display;
-      xhr.open("GET", url, true);
-      xhr.send();
-//       xhr.open("POST", url, true);
-//       xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-//       xhr.send("title="+b);
+//       xhr.open("GET", url, true);
+//       xhr.send();
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+      xhr.send("title="+b);
    }//end
    
    function first(){

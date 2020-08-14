@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>mytestxml.html</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="img/icon.png" />
+		<link rel="apple-touch-icon" href="img/icon.png" />
+		<!-- 모바일 웹 페이지 설정 끝 -->
+
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<![endif]-->
+
+<!-- 공통 css -->
+<style type="text/css">
+	*{ font-size:16pt; font-weight:bold;  font-family: Comic Sans MS;}
+</style>
+
+<!-- jQuery Framework 참조하기 -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+		<!-- 사용자 스크립트 블록 -->
+		<script type="text/javascript">
+			$(function() {
+				$("#mybtn").click(function() {
+					$.ajax({
+						url: "mytest.xml",
+						type: "get",
+						dataType: "xml",
+						cache: false,
+						timeout: 30000,
+						success: function(xml) {
+							// 반복되는 태그 단위를 찾아서 each() 함수 사용
+							$(xml).find("subject").each(function() {
+								// 각 개별 요소에 속해 있는 텍스트 데이터 추출
+								var title = $(this).find("title").text();
+								var time = $(this).find("time").text();
+								var teacher = $(this).find("teacher").text();
+							
+								// 출력을 위한 동적 요소의 생성
+								var div = $("<div>");
+								var p1 = $("<p>").html(title);
+								var p2 = $("<p>").html(time);
+								var p3 = $("<p>").html("담당강사:" + teacher) ;
+								var p4 = $("</div>");
+								
+								// 출력
+								div.append(p1).append(p2).append(p3).append(p4);
+								$("#result").append(div);
+								$("#result").append("<hr color=red size=3 />");
+							});
+						},
+						error: function(xhr, textStatus, errorThrown) {
+							$("div").html("<div>" + textStatus + " (HTTP-" + xhr.status + " / " + errorThrown + ")</div>" );
+						}
+					});
+				});
+			});
+		</script>
+
+	</head>
+	<body>
+		<h3 class="title">$.ajax() 함수를 사용한 XML데이터 읽기</h3>
+
+		<div class="exec">
+			<input type="button" value="xml데이터 가져오기" id="mybtn" />
+		</div>
+		
+		<hr>
+		<div class="console" id="result"></div>
+	</body>
+</html>

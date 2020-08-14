@@ -20,9 +20,9 @@
 </head>
 <body>
 	<%  //단독실행하면 에러
-		  Gsabun = Integer.parseInt(request.getParameter("idx1"));
-		  writer  = request.getParameter("idx2");	  
-		  content = request.getParameter("idx3");	  
+		  Gsabun = Integer.parseInt(request.getParameter("sabun"));
+		  writer  = request.getParameter("writer");	  
+		  content = request.getParameter("content");	  
 		  
 		  try{
 		  	msg="insert into guestreply values(guestreply_seq.nextval,?,?,?)";

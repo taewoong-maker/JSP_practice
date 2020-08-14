@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="ssi.jsp" %>
+<%@page import="net.tis.sql.GuestSQL"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>[GuestDelete.jsp]</title>
+<title>[GuestDelete2.jsp]</title>
 <style>
 	tr:nth-child(1) {
 	text-align:center;	
@@ -21,24 +23,16 @@
 </style>
 <script type="text/javascript"></script>
 </head>
-<body>
-	
+<body>	
 		<%
 			try{ //삭제하는 쿼리
 				Gdata = request.getParameter("idx");
 				System.out.println("넘어온 Gsabun = " + Gdata);
-				msg="delete from guest where sabun = " + Gdata;
-				ST=CN.createStatement();
-				ST.executeUpdate(msg);
-				System.out.println("데이터 삭제 성공 했습니다.");	
+				sql.dbDelete(Gdata);
 			} catch (Exception e){
 				System.out.println(e);
 			}
 			response.sendRedirect("GuestList.jsp");
-		%>
-		
-	
-	
-	
+		%>	
 </body>
 </html>

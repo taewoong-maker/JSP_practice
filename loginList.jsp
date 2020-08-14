@@ -10,28 +10,36 @@
    </style>
 </head>
 <body>
-<script type="text/javascript">
-
-</script>
+ <p><br>
+ <div align="center">
+   <img src="images/a1.png">
+ </div>
 <%
-   String a = request.getParameter("loginID");
-   String b = request.getParameter("loginPWD");
+  //loginList.jsp
+   String a = request.getParameter("UID");
+   String b = request.getParameter("UPWD");
   try{
    msg="select count(*) as cnt from login where userid =? and pwd =? ";
    PST=CN.prepareStatement(msg);
    		PST.setString(1, a);
    		PST.setString(2, b);
    RS=PST.executeQuery();
-  }catch(Exception ex){ }
+  }catch(Exception ex){ System.out.println(ex); }
  if(RS.next()==true){ Gtotal=RS.getInt("cnt"); }
  if( Gtotal>0){	 
-	 session.setAttribute("naver", a);
-	 out.println("<font color=red>"+a+"회원님의 로그인성공!!!</font>");
-	 out.println("<input type='button' onclick='myload();' value='로그아웃'>");
-  }else{
-	out.println("<font color=red>회원님의 로그인실패</font>");
-	out.println("<input type='button' onclick='myload();' value='로그인'>");  
-  }%>
+	 session.setAttribute("naver", a); //userid값을 가짜변수 naver에 넘김
+	 response.sendRedirect("guestList.jsp");
+	 
+	 //Cookie ck=new Cookie("google", a); //쿠키내장클래스 객체화 
+	 //response.addCookie(ck); //쿠키추가등록
+	 //response.sendRedirect("main.jsp");
+ }else{
+%>	 
+  <script type="text/javascript">
+     alert("로그인문서로 이동합니다\UserID,PWD데이터를 입력하세요");
+     location.href="login.jsp";
+  </script>	 
+<%}%>	
 </body>
 </html>
 

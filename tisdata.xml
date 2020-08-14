@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<products>
+    <product>
+        <name>홍차</name>
+        <price>2000</price>
+    </product>
+
+    <product>
+        <name>커피</name>
+        <price>3000</price>
+    </product>
+
+    <product>
+        <name>녹차</name>
+        <price>1500</price>
+    </product>
+    
+    <product>
+        <name>java</name>
+        <price>2400</price>
+    </product>
+</products>

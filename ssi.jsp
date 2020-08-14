@@ -1,48 +1,77 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.util.Date"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="net.tis.sql.GuestSQL"%>
+<%@ page import="net.tis.sql.GuestDTO"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.CallableStatement"%>
+<%@ page import="java.sql.PreparedStatement"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.util.Date"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ssi.jsp</title>
+<title></title>
+<style>
+	table{
+		border: 1px solid;
+		cellspacing:"0";
+		border:"1";
+	}
+	tr{
+		border: 1px solid;
+		
+		collspaning:0;
+	}	
+	td{
+		border: 1px solid;
+		collspaning:0;
+	}
+	a{
+		text-decoration: none;
+		color: green;
+	}
+</style>
+<script type="text/javascript"></script>
 </head>
 <body>
-<%!
-	Connection CN, CN2, CN3;
-	Statement ST, ST1, ST2, ST3;
-	PreparedStatement PST, PST2, PST3;
-	ResultSet RS,RS1, RS2, RS3;
-	String msg, msg2, msg3;
-	String name, identity, pass, juso1, juso2, id, content, title, code;
-	String Rwriter;
-	Date  dt = new Date();
-	Date birth;
-	String url, file, size;
-	int Gtotal, Stotal, Rtotal, Rnum, tel;
-	String pnum;//페이지 번호를 문자로 읽어들임
-	int pageNUM, pagecount; // 숫자로 변환, 총페이지 수 
-	int start, end;
-	int startpage, endpage;
-	int tmp; 
-
-%>
+<%!Connection CN;
+	Statement ST, ST2, ST3;
+	PreparedStatement PST;
+	CallableStatement CST;
+	ResultSet RS, RS2, RS3;
+	
+	int Gsabun, Gpay, Ghit;
+	int Gtotal, RGtotal;//전체레코드 개수
+	int GStotal;//조회개수
+	
+	String Gname, Gtitle, Gemail;
+	java.util.Date Gwdate;	
+	String msg, msg3;	
+	String Gdata;
+	
+  //댓글관련전역변수
+  int Rrn, Rnum, Rsabun, num;
+  String Rwriter, Rcontent ;
+  String content, writer;
+  %>
 
 <%
 	try{
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	String url="jdbc:oracle:thin:@127.0.0.1:1521:XE";
-	CN=DriverManager.getConnection(url,"system", "1234");
-   }catch(Exception ex){System.out.println("ssi.jsp 문서 db에러:"+ex);}
-%>
+		Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이브로드
+   		String url="jdbc:oracle:thin:@127.0.0.1:1521:XE" ;
+    	CN=DriverManager.getConnection(url,"system","1234");
+   	    //System.out.println("오라클연결성공success");
+	}catch(Exception e){
+		out.println(e);
+		System.out.println(e);
+	}
+
+// 	//자바클래스 객체화
+	GuestSQL sql = new GuestSQL();
+	GuestDTO dto = new GuestDTO();
+%>	
 </body>
 </html>

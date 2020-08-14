@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="ssi.jsp" %>
+<%@ include file="ssi.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -37,13 +37,6 @@
 	  Gpay   = Integer.parseInt(request.getParameter("pay"));	  
 	  Gemail = request.getParameter("email");	  
 	  
-	  //웹페이지에 출력
-	  System.out.println("사번=" + Gsabun + "<br>");
-	  System.out.println("이름=" + Gname + "<br>");
-	  System.out.println("제목=" + Gtitle + "<br>");
-	  System.out.println("급여=" + Gpay + "<br>");
-	  System.out.println("메일=" + Gemail + "<br>");
-	  
 	  dto.setName(Gname);
 	  dto.setTitle(Gtitle);
 	  dto.setSabun(Gsabun);
@@ -52,7 +45,7 @@
 	  
 	  try{
 	    Date now = new Date();
-// 	    System.out.println("[GuestWriteSave2.jsp_PST used] Oracle Connected at "+ now);	   
+	    System.out.println("[GuestWriteSave2.jsp_PST used] Oracle Connected at "+ now);	   
 	    sql.dbInsert(dto);
 	    out.println(msg);	    
 	    } catch (Exception e){

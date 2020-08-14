@@ -22,53 +22,26 @@
 <p>
 	
 <%		
-	GuestDTO d = sql.dbDetail(request.getParameter("idx2"));	
-	int a = Integer.parseInt(request.getParameter("idx"));
-%>		
-	<table width=700px cellspacing="0">
-		
-		<tr>
-			<td colspan="2" class="sabun">
-				사번 : <%=d.getSabun() %>
-			</td>			
-		</tr>
-		<tr>
-			<td rowspan="5">
-				<img alt="" src="images\bear.jpg">
-			</td>
-			<td>
-				이름 : <%=d.getName() %> 
-			</td>			
-		</tr>
-		<tr>
-			<td >
-				제목 : <%=d.getTitle() %> 
-			</td>
-		</tr>
-		<tr>
-			<td >
-				급여 : <%=d.getPay() %> 
-			</td>
-		</tr>
-		<tr>
-			<td >
-				조회수 : <%=d.getHit()%>
-			</td>
-		</tr>
-		<tr>
-			<td >
-				이메일 : <%=d.getEmail() %> 
-			</td>
-		</tr>
-	</table>
-	
-	 <!-- 댓글문서포함 Guest_reply.jsp -->
-		<jsp:include page="GuestReply.jsp">
-<%--       		 <jsp:param  name="Ridx" value="<%=d.getSabun()%>" /> --%>
-      		 <jsp:param  name="Ridx" value="<%=a%>" />
-    	</jsp:include>
-
-	
+	  Gsabun = Integer.parseInt(request.getParameter("sabun"));
+	  writer  = request.getParameter("writer");	  
+	  content = request.getParameter("content");	  
+	  num = Integer.parseInt(request.getParameter("num"));
+	  try{
+	  		msg="update guestreply set writer=?, content=? where num = ?";	 							
+  			PST = CN.prepareStatement(msg);
+			PST.setString(1, writer);
+			System.out.println(writer);
+			PST.setString(2, content);
+			System.out.println(content);
+			PST.setInt(3, num);
+			System.out.println(num);
+  			PST.executeUpdate(); //진짜저장  		  		
+  			System.out.println("GuestReply_edit.jsp 수정성공\n");	    
+	    } catch (Exception e){
+	       System.out.println("[GuestReply_edit.jsp] 에러 사유 : " + e);
+	       e.printStackTrace();}
+	   response.sendRedirect("GuestDetail.jsp?idx=" + Gsabun);
+%>			
 	
 </body>
 </html>

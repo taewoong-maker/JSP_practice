@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title> tisdata_ajax.html </title>
+  <style type="text/css">
+    *{ font-size:20pt; font-weight:bold;  font-family: "Comic Sans MS";}
+  </style>
+</head>
+<body>
+
+<div id="demo">
+  Ajax = Asynchronous Javascript And XML <p></p>
+<button type="button" onclick="first()"> ajax xml </button>
+</div>
+
+<script>
+  var  xhr ; //javascript에서 변수선언을 let,const 권장
+  var msg="" ;
+
+  function first() {
+     xhr = new XMLHttpRequest();
+     xhr.onreadystatechange=display;
+     xhr.open("GET", "tisdata.xml", true);
+     xhr.send();
+  }
+
+  function display() {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        var xml = xhr.responseXML;
+        for(var i=0; i<4; i++){
+          var name=xml.getElementsByTagName('name')[i].firstChild.nodeValue
+          var price=xml.getElementsByTagName('price')[i].firstChild.nodeValue;
+          msg +=name+ '  ' + price +'<br>';
+        }
+        document.getElementById("demo").innerHTML=msg;
+      }
+    }
+  }//end
+</script>
+
+</body>
+</html>
+
